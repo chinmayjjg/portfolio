@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope } from 'react-icons/fa';
+import emailjs from 'emailjs-com';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -18,10 +19,19 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
-    alert('Thank you for your message! I\'ll get back to you soon.');
-    setFormData({ name: '', email: '', message: '' });
+
+    emailjs.send(
+      'service_ngyjsb2',      // e.g. 'service_xxxxx'
+      'template_xxfsdxj',     // e.g. 'template_xxxxx'
+      formData,
+      'Sb65SNTB-eeIDhnBN'       // e.g. 'vjxsoL2AqrYkjo_iF'
+    )
+    .then(() => {
+      alert('Thank you for reaching out! Your message has been received. I appreciate your interest and will get back to you as soon as possible.');
+      setFormData({ name: '', email: '', message: '' });
+    }, () => {
+      alert('Oops! Something went wrong. Please try again.');
+    });
   };
 
   const socialLinks = [
@@ -143,4 +153,4 @@ const Contact = () => {
   );
 };
 
-export default Contact; 
+export default Contact;
