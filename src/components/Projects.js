@@ -18,6 +18,12 @@ const Projects = () => {
       liveLink: 'https://github.com/chinmayjjg/weather-',
       githubLink: 'https://github.com/chinmayjjg/weather-'
     },
+    {
+  title: 'DevLink',
+  description: 'A developer link-sharing platform that allows users to create customizable profiles with their important links, projects, and social media.',
+  technologies: ['React', 'Tailwind CSS', 'Node.js', 'Express', 'MongoDB'],
+  githubLink: 'https://github.com/chinmayjjg/devlink'
+ },
     
 
   ];
