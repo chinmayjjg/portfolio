@@ -3,29 +3,35 @@ import { motion } from 'framer-motion';
 
 const Projects = () => {
   const projects = [
-  
     {
-   title: 'Second Brain',
-   description: 'A productivity web app that allows users to store, organize, retrieve, and share notes and ideas, acting like an extension of their own mind. Features include note creation, categorization, search, cloud storage, and knowledge sharing.',
-   technologies: ['TypeScript', 'React', 'Node.js', 'Express', 'MongoDB'],
-   liveLink: 'https://second-brain-client-7tbj.vercel.app/login',
-   githubLink: 'https://github.com/chinmayjjg/second-brain'
-   },
+      title: 'Second Brain',
+      description: 'A productivity web app that allows users to store, organize, retrieve, and share notes and ideas, acting like an extension of their own mind. Features include note creation, categorization, search, cloud storage, and knowledge sharing.',
+      technologies: ['TypeScript', 'React', 'Node.js', 'Express', 'MongoDB'],
+      liveLink: 'https://second-brain-client-7tbj.vercel.app/login',
+      githubLink: 'https://github.com/chinmayjjg/second-brain',
+      image: '/images/second-brain.png' // Add your image path here
+    },
+    {
+      title: 'AI Ticket Management System',
+      description: 'A full-stack ticket management platform with AI-powered categorization, priority detection, and smart agent assignment. Built with TypeScript, Express, MongoDB, and React for real-time dashboards and role-based access.',
+      technologies: ['TypeScript', 'React', 'Express', 'MongoDB', 'Tailwind CSS', 'JWT'],
+      githubLink: 'https://github.com/chinmayjjg/ai-ticket-management',
+      image: '/images/ai-ticket-management.png'
+    },
     {
       title: 'Weather app',
       description: 'A responsive weather application that displays current weather conditions and forecasts using OpenWeatherMap API with beautiful UI animations.',
       technologies: ['React', 'CSS3', ' Open Weather API'],
-      liveLink: 'https://github.com/chinmayjjg/weather-',
-      githubLink: 'https://github.com/chinmayjjg/weather-'
+      githubLink: 'https://github.com/chinmayjjg/weather-',
+      image: '/images/weather-app.png'
     },
     {
-  title: 'DevLink',
-  description: 'A developer link-sharing platform that allows users to create customizable profiles with their important links, projects, and social media.',
-  technologies: ['React', 'Tailwind CSS', 'Node.js', 'Express', 'MongoDB'],
-  githubLink: 'https://github.com/chinmayjjg/devlink'
- },
-    
-
+      title: 'DevLink',
+      description: 'A developer link-sharing platform that allows users to create customizable profiles with their important links, projects, and social media.',
+      technologies: ['React', 'Tailwind CSS', 'Node.js', 'Express', 'MongoDB'],
+      githubLink: 'https://github.com/chinmayjjg/devlink',
+      image: '/images/devlink.png'
+    },
   ];
 
   return (
@@ -51,15 +57,21 @@ const Projects = () => {
             whileHover={{ y: -10 }}
           >
             <div className="project-image">
-              {project.title.charAt(0)}
+              <img
+                src={project.image}
+                alt={project.title}
+                style={{ width: '100%', height: 'auto', borderRadius: '8px' }}
+              />
             </div>
             <div className="project-content">
               <h3>{project.title}</h3>
               <p>{project.description}</p>
               <div className="project-links">
-                <a href={project.liveLink} target="_blank" rel="noopener noreferrer">
-                  Live Demo
-                </a>
+                {project.liveLink && (
+                  <a href={project.liveLink} target="_blank" rel="noopener noreferrer">
+                    Live Demo
+                  </a>
+                )}
                 <a href={project.githubLink} target="_blank" rel="noopener noreferrer">
                   GitHub
                 </a>
@@ -72,4 +84,4 @@ const Projects = () => {
   );
 };
 
-export default Projects; 
+export default Projects;
