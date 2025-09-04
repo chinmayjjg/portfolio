@@ -172,6 +172,27 @@ const Hero = () => {
               →
             </motion.span>
           </motion.a>
+
+          {/* Download CV Button */}
+          <motion.a
+            href="/chinmay_pradhan_mca.pdf"
+            download
+            className="cta-button"
+            whileHover={{ 
+              scale: 1.05,
+              boxShadow: "0 10px 30px rgba(0, 0, 0, 0.3)"
+            }}
+            whileTap={{ scale: 0.95 }}
+            style={{ marginLeft: '16px' }}
+          >
+            <motion.span
+              initial={{ opacity: 0, x: 10 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.3, delay: 3.2 }}
+            >
+              Download CV
+            </motion.span>
+          </motion.a>
         </motion.div>
 
         {/* Scroll Indicator */}
@@ -193,4 +214,4 @@ const Hero = () => {
   );
 };
 
-export default Hero; 
+export default Hero;
