@@ -113,13 +113,13 @@ const Hero = () => {
             >
               Full Stack Developer
             </motion.span>
-            {" "}&{" "}
+            {" "}{" "}
             <motion.span
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 2 }}
             >
-              Learning web 3.0
+              
             </motion.span>
           </motion.p>
         </motion.div>
