@@ -1,5 +1,4 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import { ThemeProvider } from './context/ThemeContext';
 import Header from './components/Header';
 import Hero from './components/Hero';
@@ -8,6 +7,7 @@ import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
 import AnimatedBackground from './components/AnimatedBackground';
+import ThemeMusic from './components/ThemeMusic';
 import './App.css';
 
 function App() {
@@ -15,6 +15,7 @@ function App() {
     <ThemeProvider>
       <div className="App">
         <AnimatedBackground />
+        <ThemeMusic />
         <Header />
         <main>
           <Hero />
@@ -28,4 +29,4 @@ function App() {
   );
 }
 
-export default App; 
+export default App;

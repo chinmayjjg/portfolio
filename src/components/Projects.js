@@ -1,80 +1,128 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
+import useSound from '../hooks/useSound';
 
 const Projects = () => {
+  const playThwip = useSound('/sounds/thwip.mp3', 0.6);
+
   const projects = [
     {
       title: 'Second Brain',
-      description: 'A productivity web app that allows users to store, organize, retrieve, and share notes and ideas, acting like an extension of their own mind. Features include note creation, categorization, search, cloud storage, and knowledge sharing.',
-      technologies: ['TypeScript', 'React', 'Node.js', 'Express', 'MongoDB'],
+      description: 'Productivity app for your mind.',
+      tags: ['TS', 'React', 'Node', 'Mongo'],
       liveLink: 'https://second-brain-client-7tbj.vercel.app/login',
       githubLink: 'https://github.com/chinmayjjg/second-brain',
-      image: '/images/second-brain.png' // Add your image path here
+      image: '/images/second-brain.png'
     },
     {
-      title: 'AI Ticket Management System',
-      description: 'A full-stack ticket management platform with AI-powered categorization, priority detection, and smart agent assignment. Built with TypeScript, Express, MongoDB, and React for real-time dashboards and role-based access.',
-      technologies: ['TypeScript', 'React', 'Express', 'MongoDB', 'Tailwind CSS', 'JWT'],
+      title: 'AI Ticket System',
+      description: 'Smart support with AI agents.',
+      tags: ['TS', 'React', 'Express', 'AI'],
+      liveLink: null,
       githubLink: 'https://github.com/chinmayjjg/ai-ticket-management',
       image: '/images/ai-ticket-management.png'
     },
     {
-      title: 'Weather app',
-      description: 'A responsive weather application that displays current weather conditions and forecasts using OpenWeatherMap API with beautiful UI animations.',
-      technologies: ['React', 'CSS3', ' Open Weather API'],
+      title: 'Weather App',
+      description: 'Forecasts with style.',
+      tags: ['React', 'API', 'CSS'],
+      liveLink: null,
       githubLink: 'https://github.com/chinmayjjg/weather-',
       image: '/images/weather-app.png'
     },
     {
       title: 'DevLink',
-      description: 'A developer link-sharing platform that allows users to create customizable profiles with their important links, projects, and social media.',
-      technologies: ['React', 'Tailwind CSS', 'Node.js', 'Express', 'MongoDB'],
+      description: 'Share your developer profile.',
+      tags: ['React', 'Node', 'Mongo'],
+      liveLink: null,
       githubLink: 'https://github.com/chinmayjjg/devlink',
       image: '/images/devlink.png'
-    },
+    }
   ];
 
   return (
-    <section id="projects" className="section">
-      <motion.h2
-        className="section-title"
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ once: true }}
-      >
-        Featured Projects
-      </motion.h2>
+    <section className="section" id="projects">
+      <h2 className="section-title" data-text="WEB OF PROJECTS">WEB OF PROJECTS</h2>
       <div className="projects-grid">
         {projects.map((project, index) => (
           <motion.div
-            key={project.title}
+            key={index}
             className="project-card"
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: index * 0.1 }}
             viewport={{ once: true }}
-            whileHover={{ y: -10 }}
+            transition={{ delay: index * 0.1 }}
+            whileHover="hover"
+            onMouseEnter={playThwip}
           >
             <div className="project-image">
-              <img
-                src={project.image}
-                alt={project.title}
-                style={{ width: '100%', height: 'auto', borderRadius: '8px' }}
-              />
+              {/* Comic "Thwip!" Overlay */}
+              <motion.div
+                variants={{
+                  hover: { opacity: 1, scale: 1.2, rotate: -10 }
+                }}
+                initial={{ opacity: 0, scale: 0 }}
+                style={{
+                  position: 'absolute',
+                  zIndex: 10,
+                  background: 'white',
+                  color: 'black',
+                  padding: '0.5rem 1rem',
+                  fontFamily: 'var(--comic-font)',
+                  fontSize: '2rem',
+                  border: '3px solid black',
+                  boxShadow: '5px 5px 0 var(--spidey-red)',
+                  pointerEvents: 'none'
+                }}
+              >
+                THWIP!
+              </motion.div>
+
+              {project.image ? (
+                <div style={{
+                  width: '100%', height: '100%',
+                  background: `url(${project.image}) center/cover`,
+                  filter: 'grayscale(100%) contrast(120%)'
+                }} />
+              ) : (
+                <FaGithub size={50} color="white" />
+              )}
             </div>
+
             <div className="project-content">
-              <h3>{project.title}</h3>
-              <p>{project.description}</p>
-              <div className="project-links">
+              <h3 style={{ color: 'var(--spidey-yellow)', fontSize: '1.8rem', marginBottom: '0.5rem' }}>
+                {project.title}
+              </h3>
+              <p style={{ fontFamily: 'var(--tech-font)', fontSize: '0.9rem', marginBottom: '1rem', color: '#ccc' }}>
+                {project.description}
+              </p>
+
+              <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', marginBottom: '1.5rem' }}>
+                {project.tags.map(tag => (
+                  <span key={tag} style={{
+                    fontSize: '0.7rem',
+                    padding: '0.2rem 0.5rem',
+                    border: '1px solid var(--spidey-blue)',
+                    color: 'var(--spidey-blue)',
+                    fontFamily: 'var(--tech-font)'
+                  }}>
+                    {tag}
+                  </span>
+                ))}
+              </div>
+
+              <div style={{ display: 'flex', gap: '1rem' }}>
+                <a href={project.githubLink} target="_blank" rel="noopener noreferrer"
+                  style={{ color: 'white', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 'bold' }}>
+                  <FaGithub /> CODE
+                </a>
                 {project.liveLink && (
-                  <a href={project.liveLink} target="_blank" rel="noopener noreferrer">
-                    Live Demo
+                  <a href={project.liveLink} target="_blank" rel="noopener noreferrer"
+                    style={{ color: 'var(--spidey-red)', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 'bold' }}>
+                    <FaExternalLinkAlt /> LIVE
                   </a>
                 )}
-                <a href={project.githubLink} target="_blank" rel="noopener noreferrer">
-                  GitHub
-                </a>
               </div>
             </div>
           </motion.div>

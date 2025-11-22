@@ -1,213 +1,140 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { FaCode, FaRocket, FaLightbulb } from 'react-icons/fa';
+import { FaCode, FaSpider, FaFileDownload } from 'react-icons/fa';
+import useSound from '../hooks/useSound';
 
 const Hero = () => {
-  const floatingIcons = [
-    { icon: FaCode, delay: 0, x: -50, y: -30 },
-    { icon: FaRocket, delay: 0.5, x: 50, y: -20 },
-    { icon: FaLightbulb, delay: 1, x: -30, y: 40 },
-    { icon: FaCode, delay: 1.5, x: 40, y: 30 },
-  ];
+  const playGlitch = useSound('/sounds/glitch.mp3', 0.3);
+  const playClick = useSound('/sounds/click.mp3', 0.5);
+
+  useEffect(() => {
+    // Play glitch sound on mount (user interaction usually required first, so this might be blocked until click)
+  }, []);
 
   return (
-    <section className="hero">
-      {/* Floating Icons */}
-      {floatingIcons.map((item, index) => (
-        <motion.div
-          key={index}
-          className="floating-icon"
-          initial={{ opacity: 0, scale: 0 }}
-          animate={{ 
-            opacity: [0, 1, 0],
-            scale: [0, 1, 0.8],
-            x: [0, item.x, 0],
-            y: [0, item.y, 0],
-            rotate: [0, 360]
-          }}
-          transition={{
-            duration: 4,
-            repeat: Infinity,
-            delay: item.delay,
-            ease: "easeInOut"
-          }}
-        >
-          <item.icon size={24} />
-        </motion.div>
-      ))}
-
-      {/* Animated Background Elements */}
-      <motion.div
-        className="hero-bg-element bg-element-1"
-        animate={{
-          scale: [1, 1.2, 1],
-          rotate: [0, 180, 360],
-          opacity: [0.3, 0.6, 0.3]
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-      />
-      
-      <motion.div
-        className="hero-bg-element bg-element-2"
-        animate={{
-          scale: [1, 0.8, 1],
-          rotate: [360, 180, 0],
-          opacity: [0.2, 0.5, 0.2]
-        }}
-        transition={{
-          duration: 10,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: 2
-        }}
-      />
-
-      <div className="hero-content">
-        {/* Animated Text with Typewriter Effect */}
-        <motion.div
-          className="hero-title-container"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: "easeOut" }}
-        >
-          <motion.h1
-            className="hero-title"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.5 }}
-          >
-            Hi, I'm{" "}
-            <motion.span
-              className="highlight-text"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 1 }}
-              whileHover={{ scale: 1.1, rotate: 5 }}
-            >
-              Chinmay
-            </motion.span>
-          </motion.h1>
-        </motion.div>
-
-        {/* Animated Subtitle */}
-        <motion.div
-          className="hero-subtitle-container"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.2 }}
-        >
-          <motion.p
-            className="hero-subtitle"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 1.5 }}
-          >
-            <motion.span
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 1.7 }}
-            >
-              Full Stack Developer
-            </motion.span>
-            {" "}{" "}
-            <motion.span
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 2 }}
-            >
-              
-            </motion.span>
-          </motion.p>
-        </motion.div>
-
-        {/* Animated Description */}
-        <motion.p
-          className="hero-description"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 2.2 }}
-        >
-          Crafting digital experiences with code, creativity, and innovation
-        </motion.p>
-
-        {/* Enhanced CTA Button */}
-        <motion.div
-          className="cta-container"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 2.5 }}
-        >
-          <motion.a
-            href="#contact"
-            className="cta-button"
-            whileHover={{ 
-              scale: 1.05,
-              boxShadow: "0 10px 30px rgba(0, 0, 0, 0.3)"
-            }}
-            whileTap={{ scale: 0.95 }}
-            onClick={() => {
-              const element = document.getElementById('contact');
-              if (element) {
-                element.scrollIntoView({ behavior: 'smooth' });
-              }
-            }}
-          >
-            <motion.span
-              initial={{ opacity: 0, x: -10 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.3, delay: 2.8 }}
-            >
-              Get In Touch
-            </motion.span>
-            <motion.span
-              className="cta-arrow"
-              initial={{ opacity: 0, x: -5 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.3, delay: 3 }}
-            >
-              →
-            </motion.span>
-          </motion.a>
-
-          {/* Download CV Button */}
-          <motion.a
-            href="/chinmay_pradhan_mca.pdf"
-            download
-            className="cta-button"
-            whileHover={{ 
-              scale: 1.05,
-              boxShadow: "0 10px 30px rgba(0, 0, 0, 0.3)"
-            }}
-            whileTap={{ scale: 0.95 }}
-            style={{ marginLeft: '16px' }}
-          >
-            <motion.span
-              initial={{ opacity: 0, x: 10 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.3, delay: 3.2 }}
-            >
-              Download CV
-            </motion.span>
-          </motion.a>
-        </motion.div>
-
-        {/* Scroll Indicator */}
-        <motion.div
-          className="scroll-indicator"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 3.5 }}
-        >
+    <section className="hero" id="hero">
+      {/* Dynamic Background Elements */}
+      <div style={{ position: 'absolute', inset: 0, overflow: 'hidden', pointerEvents: 'none' }}>
+        {[...Array(5)].map((_, i) => (
           <motion.div
-            className="scroll-dot"
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          />
-          <span>Scroll Down</span>
+            key={i}
+            style={{
+              position: 'absolute',
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              fontSize: `${Math.random() * 3 + 1}rem`,
+              color: i % 2 === 0 ? 'var(--spidey-red)' : 'var(--spidey-blue)',
+              opacity: 0.2,
+              filter: 'blur(2px)'
+            }}
+            animate={{
+              y: [0, -100, 0],
+              rotate: [0, 360],
+              scale: [1, 1.2, 1]
+            }}
+            transition={{
+              duration: Math.random() * 10 + 10,
+              repeat: Infinity,
+              ease: "linear"
+            }}
+          >
+            {i % 3 === 0 ? <FaSpider /> : i % 3 === 1 ? <FaCode /> : '🕸️'}
+          </motion.div>
+        ))}
+      </div>
+
+      <div className="hero-content" style={{ zIndex: 2, width: '100%', padding: '0 1rem' }}>
+        <motion.div
+          initial={{ scale: 0.5, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ type: "spring", bounce: 0.5 }}
+          onAnimationComplete={() => playGlitch()}
+        >
+          <h2 style={{
+            fontFamily: 'var(--tech-font)',
+            color: 'var(--spidey-yellow)',
+            marginBottom: '1rem',
+            letterSpacing: '4px',
+            fontSize: 'clamp(1rem, 4vw, 1.5rem)'
+          }}>
+            SYSTEM_ONLINE
+          </h2>
+
+          <h1
+            className="hero-title glitch-text"
+            data-text="CHINMAY PRADHAN"
+            onMouseEnter={playGlitch}
+            style={{
+              fontSize: 'clamp(2.5rem, 8vw, 6rem)', // Responsive font size
+              lineHeight: 1.1
+            }}
+          >
+            CHINMAY PRADHAN
+          </h1>
+
+          <motion.div
+            style={{
+              background: 'var(--spidey-red)',
+              color: 'white',
+              display: 'inline-block',
+              padding: '0.2rem 1rem',
+              transform: 'skew(-10deg)',
+              marginBottom: '2rem',
+              fontFamily: 'var(--comic-font)',
+              fontSize: 'clamp(1.2rem, 3vw, 1.5rem)'
+            }}
+            animate={{ scale: [1, 1.05, 1] }}
+            transition={{ repeat: Infinity, duration: 2 }}
+          >
+            FULL-STACK DEVELOPER
+          </motion.div>
+
+          <p style={{
+            fontFamily: 'var(--tech-font)',
+            maxWidth: '600px',
+            margin: '0 auto 3rem',
+            lineHeight: '1.6',
+            background: 'rgba(0,0,0,0.7)',
+            padding: '1rem',
+            border: '1px solid var(--spidey-blue)',
+            fontSize: 'clamp(0.9rem, 2vw, 1rem)'
+          }}>
+            &gt; Initializing web protocols...<br />
+            &gt; Loading creative modules...<br />
+            &gt; Ready to swing into action.
+          </p>
+
+          <div style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <motion.a
+              href="#projects"
+              className="cta-button"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              onClick={playClick}
+              onMouseEnter={playGlitch}
+            >
+              EXPLORE UNIVERSE
+            </motion.a>
+
+            <motion.a
+              href="/chinmay_pradhan_mca.pdf"
+              download
+              className="cta-button"
+              style={{
+                background: 'var(--spidey-blue)',
+                color: 'white',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.5rem'
+              }}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              onClick={playClick}
+              onMouseEnter={playGlitch}
+            >
+              DOWNLOAD DATA <FaFileDownload />
+            </motion.a>
+          </div>
         </motion.div>
       </div>
     </section>

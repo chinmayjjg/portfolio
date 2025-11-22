@@ -1,37 +1,23 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope, FaPaperPlane } from 'react-icons/fa';
 import emailjs from 'emailjs-com';
+import useSound from '../hooks/useSound';
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const playClick = useSound('/sounds/click.mp3', 0.5);
 
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
+  const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    emailjs.send(
-      'service_ngyjsb2',      // e.g. 'service_xxxxx'
-      'template_xxfsdxj',     // e.g. 'template_xxxxx'
-      formData,
-      'Sb65SNTB-eeIDhnBN'       // e.g. 'vjxsoL2AqrYkjo_iF'
-    )
-    .then(() => {
-      alert('Thank you for reaching out! Your message has been received. I appreciate your interest and will get back to you as soon as possible.');
-      setFormData({ name: '', email: '', message: '' });
-    }, () => {
-      alert('Oops! Something went wrong. Please try again.');
-    });
+    playClick();
+    emailjs.send('service_ngyjsb2', 'template_xxfsdxj', formData, 'Sb65SNTB-eeIDhnBN')
+      .then(() => {
+        alert('Headline: Message Received!');
+        setFormData({ name: '', email: '', message: '' });
+      }, () => alert('Error: Connection Jammed!'));
   };
 
   const socialLinks = [
@@ -39,116 +25,86 @@ const Contact = () => {
     { name: 'LinkedIn', icon: FaLinkedin, url: 'https://www.linkedin.com/in/chinmay-pradhan-476954242/' },
     { name: 'Twitter', icon: FaTwitter, url: 'https://x.com/chinmaypr4dhan' },
     { name: 'Email', icon: FaEnvelope, url: 'mailto:pradhanchinmay510@gmail.com' }
-
   ];
 
   return (
-    <section id="contact" className="section">
-      <motion.h2
-        className="section-title"
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ once: true }}
-      >
-        Get In Touch
-      </motion.h2>
-      
-      <div style={{ display: 'flex', justifyContent: 'center', gap: '3rem', flexWrap: 'wrap' }}>
+    <section className="section" id="contact">
+      <h2 className="section-title">THE DAILY BUGLE</h2>
+
+      <div className="contact-container" style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '4rem' }}>
+        {/* Newspaper Form */}
         <motion.div
           className="contact-form"
-          initial={{ opacity: 0, x: -30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          viewport={{ once: true }}
+          initial={{ rotate: -5, opacity: 0 }}
+          whileInView={{ rotate: -1, opacity: 1 }}
+          transition={{ type: "spring" }}
         >
+          <h3 style={{
+            fontFamily: 'var(--comic-font)',
+            fontSize: '2rem',
+            borderBottom: '3px solid black',
+            marginBottom: '1.5rem',
+            textAlign: 'center'
+          }}>
+            SEND US THE SCOOP!
+          </h3>
+
           <form onSubmit={handleSubmit}>
             <div className="form-group">
-              <label htmlFor="name">Name</label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                required
-              />
+              <input type="text" name="name" value={formData.name} onChange={handleChange} required placeholder="YOUR NAME" />
             </div>
             <div className="form-group">
-              <label htmlFor="email">Email</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-              />
+              <input type="email" name="email" value={formData.email} onChange={handleChange} required placeholder="YOUR EMAIL" />
             </div>
             <div className="form-group">
-              <label htmlFor="message">Message</label>
-              <textarea
-                id="message"
-                name="message"
-                value={formData.message}
-                onChange={handleChange}
-                required
-              />
+              <textarea name="message" value={formData.message} onChange={handleChange} required rows="4" placeholder="YOUR STORY..."></textarea>
             </div>
-            <button type="submit" className="submit-btn">
-              Send Message
+            <button type="submit" className="cta-button" style={{ width: '100%', fontSize: '1.2rem' }}>
+              SUBMIT TO EDITOR <FaPaperPlane />
             </button>
           </form>
         </motion.div>
 
-        <motion.div
-          style={{ 
-            display: 'flex', 
-            flexDirection: 'column', 
-            justifyContent: 'center',
-            alignItems: 'center',
-            gap: '2rem',
-            color: 'white'
-          }}
-          initial={{ opacity: 0, x: 30 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          viewport={{ once: true }}
-        >
-          <h3 style={{ fontSize: '1.5rem', marginBottom: '1rem' }}>Connect With Me</h3>
-          <div style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap' }}>
-            {socialLinks.map((social, index) => (
-              <motion.a
-                key={social.name}
-                href={social.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  gap: '0.5rem',
-                  textDecoration: 'none',
-                  color: 'white',
-                  padding: '1rem',
-                  borderRadius: '10px',
-                  background: 'rgba(255, 255, 255, 0.1)',
-                  backdropFilter: 'blur(10px)',
-                  transition: 'transform 0.3s ease'
-                }}
-                whileHover={{ scale: 1.1 }}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-              >
-                <social.icon size={24} />
-                <span style={{ fontSize: '0.9rem' }}>{social.name}</span>
-              </motion.a>
-            ))}
-          </div>
-        </motion.div>
+        {/* Socials Column */}
+        <div className="socials-column" style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+          <h3 style={{ fontFamily: 'var(--comic-font)', fontSize: '2rem', color: 'white', textShadow: '2px 2px 0 var(--spidey-red)' }}>
+            FOLLOW THE WEB
+          </h3>
+          {socialLinks.map((social, index) => (
+            <motion.a
+              key={social.name}
+              href={social.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                background: 'var(--spidey-red)',
+                color: 'white',
+                padding: '1rem 2rem',
+                textDecoration: 'none',
+                fontFamily: 'var(--comic-font)',
+                fontSize: '1.2rem',
+                border: '2px solid white',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '1rem',
+                boxShadow: '5px 5px 0 black'
+              }}
+              whileHover={{ x: 5, boxShadow: '2px 2px 0 black' }}
+              onClick={playClick}
+            >
+              <social.icon /> {social.name.toUpperCase()}
+            </motion.a>
+          ))}
+        </div>
       </div>
+
+      <style>{`
+        @media (max-width: 768px) {
+          .contact-container { gap: 2rem; }
+          .socials-column { width: 100%; }
+          .socials-column a { justify-content: center; }
+        }
+      `}</style>
     </section>
   );
 };
