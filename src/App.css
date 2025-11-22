@@ -384,4 +384,21 @@ body {
     .skill-card {
         width: 100%;
     }
+
+    /* About Mobile */
+    .comic-photo {
+        width: 90% !important;
+        max-width: 280px !important;
+        height: auto !important;
+    }
+
+    .comic-strip {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 2rem !important;
+    }
+
+    .about-text-container {
+        grid-template-columns: 1fr !important;
+    }
 }

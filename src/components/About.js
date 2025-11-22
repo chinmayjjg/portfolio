@@ -28,7 +28,7 @@ const About = () => {
         <div className="comic-strip" style={{
           display: 'flex',
           justifyContent: 'center',
-          gap: 'clamp(1rem, 3vw, 2rem)',
+          gap: '2rem',
           flexWrap: 'wrap',
           marginBottom: '2rem',
           width: '100%',
@@ -44,9 +44,8 @@ const About = () => {
               className="comic-photo"
               style={{
                 position: 'relative',
-                width: 'clamp(200px, 40vw, 250px)',
-                height: 'clamp(240px, 48vw, 300px)',
-                maxWidth: '100%',
+                width: '250px',
+                height: '300px',
                 border: '4px solid white',
                 boxShadow: '10px 10px 0 var(--spidey-blue)',
                 background: '#fff',
@@ -64,7 +63,7 @@ const About = () => {
                 color: 'black',
                 padding: '0.3rem 0.8rem',
                 fontFamily: 'var(--comic-font)',
-                fontSize: 'clamp(0.8rem, 2vw, 1rem)',
+                fontSize: '1rem',
                 border: '2px solid black',
                 zIndex: 10,
                 whiteSpace: 'nowrap',
@@ -104,7 +103,7 @@ const About = () => {
           width: '100%',
           display: 'grid',
           gap: '2rem',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(min(300px, 100%), 1fr))',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
           padding: '0 1rem'
         }}>
           <div className="about-text">

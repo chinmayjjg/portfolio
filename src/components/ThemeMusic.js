@@ -33,27 +33,21 @@ const ThemeMusic = () => {
     };
 
     return (
-        <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1 }}
+        <div
             style={{
                 position: 'fixed',
                 bottom: '2rem',
                 right: '2rem',
-                zIndex: 1000,
-                display: 'flex',
-                alignItems: 'center',
-                gap: '1rem'
+                zIndex: 1000
             }}
         >
             <audio ref={audioRef} src="/sounds/theme.mp3" loop />
 
             {/* Music Control Button */}
-            <motion.button
+            <button
                 onClick={togglePlay}
-                whileHover={{ scale: 1.1, rotate: 10 }}
-                whileTap={{ scale: 0.9 }}
+                onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
+                onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
                 style={{
                     background: isPlaying ? 'var(--spidey-red)' : '#333',
                     color: 'white',
@@ -66,33 +60,13 @@ const ThemeMusic = () => {
                     justifyContent: 'center',
                     cursor: 'pointer',
                     boxShadow: '5px 5px 0 black',
-                    outline: 'none'
+                    outline: 'none',
+                    transition: 'transform 0.2s ease, background 0.3s ease'
                 }}
             >
                 {isPlaying ? <FaPause size={20} /> : <FaPlay size={20} style={{ marginLeft: '4px' }} />}
-            </motion.button>
-
-            {/* Visualizer / Label */}
-            <motion.div
-                animate={{
-                    width: isPlaying ? 'auto' : 0,
-                    opacity: isPlaying ? 1 : 0
-                }}
-                style={{
-                    overflow: 'hidden',
-                    whiteSpace: 'nowrap',
-                    background: 'black',
-                    color: 'var(--spidey-yellow)',
-                    padding: isPlaying ? '0.5rem 1rem' : 0,
-                    border: isPlaying ? '2px solid var(--spidey-blue)' : 'none',
-                    fontFamily: 'var(--tech-font)',
-                    fontSize: '0.8rem',
-                    borderRadius: '4px'
-                }}
-            >
-                NOW PLAYING: SPIDEY THEME 🎵
-            </motion.div>
-        </motion.div>
+            </button>
+        </div>
     );
 };
 
