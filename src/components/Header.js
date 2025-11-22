@@ -51,15 +51,15 @@ const Header = () => {
         </motion.div>
 
         {/* Hamburger Icon */}
-        <div className="hamburger" onClick={toggleMenu} style={{
-          display: 'none',
-          cursor: 'pointer',
-          fontSize: '1.5rem',
-          color: 'white',
-          zIndex: 1001
-        }}>
+        <button
+          className="hamburger"
+          onClick={toggleMenu}
+          aria-expanded={isOpen}
+          aria-controls="mobile-nav"
+          type="button"
+        >
           {isOpen ? <FaTimes /> : <FaBars />}
-        </div>
+        </button>
 
         {/* Desktop Nav */}
         <ul className="nav-links desktop-nav">
@@ -80,23 +80,11 @@ const Header = () => {
         <AnimatePresence>
           {isOpen && (
             <motion.div
+              id="mobile-nav"
+              className="mobile-nav"
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
-              style={{
-                position: 'absolute',
-                top: '100%',
-                left: 0,
-                width: '100%',
-                background: 'rgba(5, 5, 5, 0.95)',
-                borderBottom: '2px solid var(--spidey-red)',
-                padding: '2rem',
-                display: 'flex',
-                flexDirection: 'column',
-                alignItems: 'center',
-                gap: '1.5rem',
-                zIndex: 1000
-              }}
             >
               {['About', 'Skills', 'Projects', 'Contact'].map((item) => (
                 <a
@@ -174,13 +162,7 @@ const Header = () => {
         </div>
       </nav>
 
-      {/* Mobile Styles Injection */}
-      <style>{`
-        @media (max-width: 768px) {
-          .desktop-nav, .desktop-socials { display: none !important; }
-          .hamburger { display: block !important; }
-        }
-      `}</style>
+      {/* Mobile styles handled in App.css */}
     </motion.header>
   );
 };

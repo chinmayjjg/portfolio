@@ -91,7 +91,7 @@ const Hero = () => {
 
           <p style={{
             fontFamily: 'var(--tech-font)',
-            maxWidth: '600px',
+            maxWidth: 'clamp(260px, 60%, 600px)',
             margin: '0 auto 3rem',
             lineHeight: '1.6',
             background: 'rgba(0,0,0,0.7)',

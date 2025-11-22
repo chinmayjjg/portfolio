@@ -44,8 +44,6 @@ const About = () => {
               className="comic-photo"
               style={{
                 position: 'relative',
-                width: '250px',
-                height: '300px',
                 border: '4px solid white',
                 boxShadow: '10px 10px 0 var(--spidey-blue)',
                 background: '#fff',
@@ -99,11 +97,11 @@ const About = () => {
 
         {/* Text Content */}
         <div className="about-text-container" style={{
-          maxWidth: '800px',
+          maxWidth: 'clamp(320px, 90%, 900px)',
           width: '100%',
           display: 'grid',
           gap: '2rem',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
           padding: '0 1rem'
         }}>
           <div className="about-text">
