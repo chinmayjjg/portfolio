@@ -1,59 +1,50 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaGithub, FaLinkedin, FaFileDownload } from 'react-icons/fa';
-import { SiReact, SiNodedotjs, SiTypescript, SiNextdotjs } from 'react-icons/si';
+import { SiTypescript, SiReact, SiNextdotjs, SiNodedotjs } from 'react-icons/si';
 
 const Hero = () => {
   return (
-    <section className="hero" id="hero">
+    <section className="hero">
       <div className="container hero-content">
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="hero-title"
+        >
+          Full Stack Developer
+        </motion.h1>
+
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="hero-subtitle"
+        >
+          Hi, I'm Chinmay. I build accessible, pixel-perfect, and performant web experiences.
+        </motion.p>
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          className="tech-stack"
+          style={{ display: 'flex', justifyContent: 'center', gap: '2rem', marginBottom: '3rem', fontSize: '2rem', color: 'var(--text-secondary)' }}
         >
-          <h2 style={{
-            color: 'var(--accent-primary)',
-            fontWeight: 600,
-            marginBottom: '1rem',
-            letterSpacing: '2px',
-            fontSize: '1rem',
-            textTransform: 'uppercase'
-          }}>
-            Full Stack Developer
-          </h2>
+          <SiTypescript />
+          <SiReact />
+          <SiNextdotjs />
+          <SiNodedotjs />
+        </motion.div>
 
-          <h1 className="hero-title">
-            CHINMAY PRADHAN
-          </h1>
-
-          <p className="hero-subtitle">
-            I build accessible, pixel-perfect, and performant web experiences.
-            Specialized in building modern applications with the latest technologies.
-          </p>
-
-          <div style={{
-            display: 'flex',
-            justifyContent: 'center',
-            gap: '2rem',
-            margin: '3rem 0',
-            color: 'var(--text-secondary)',
-            fontSize: '2rem'
-          }}>
-            <SiTypescript title="TypeScript" />
-            <SiReact title="React" />
-            <SiNextdotjs title="Next.js" />
-            <SiNodedotjs title="Node.js" />
-          </div>
-
-          <div className="cta-group">
-            <a href="#projects" className="btn btn-primary">
-              View Work
-            </a>
-            <a href="/chinmay_pradhan_mca.pdf" download className="btn btn-secondary" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              Resume <FaFileDownload size={14} />
-            </a>
-          </div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.6 }}
+          className="cta-group"
+        >
+          <a href="#projects" className="btn btn-primary">View Work</a>
+          <a href="/resume.pdf" className="btn btn-secondary">Download Resume</a>
         </motion.div>
       </div>
     </section>

@@ -5,6 +5,8 @@ import { FaBars, FaTimes } from 'react-icons/fa';
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
 
+  const toggleMenu = () => setIsOpen(!isOpen);
+
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
     if (element) {
@@ -13,88 +15,46 @@ const Header = () => {
     }
   };
 
-  const toggleMenu = () => setIsOpen(!isOpen);
-
-  const menuVariants = {
-    closed: {
-      opacity: 0,
-      height: 0,
-      transition: {
-        duration: 0.3,
-        ease: "easeInOut"
-      }
-    },
-    open: {
-      opacity: 1,
-      height: "auto",
-      transition: {
-        duration: 0.3,
-        ease: "easeInOut"
-      }
-    }
-  };
-
   return (
     <header className="header">
-      <nav className="nav container">
-        <motion.div
-          className="logo"
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <span style={{ color: 'var(--text-primary)' }}>CHINMAY</span>
-          <span style={{ color: 'var(--text-secondary)' }}>.DEV</span>
-        </motion.div>
+      <div className="container nav">
+        <div className="logo">
+          CHINMAY.DEV
+        </div>
 
-        {/* Desktop Navigation */}
         <ul className="nav-links desktop-nav">
-          {['About', 'Skills', 'Projects', 'Contact'].map((item, index) => (
-            <motion.li
-              key={item}
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-            >
-              <a
-                href={`#${item.toLowerCase()}`}
-                onClick={(e) => {
-                  e.preventDefault();
-                  scrollToSection(item.toLowerCase());
-                }}
-              >
+          {['About', 'Skills', 'Projects', 'Contact'].map((item) => (
+            <li key={item}>
+              <a href={`#${item.toLowerCase()}`} onClick={(e) => {
+                e.preventDefault();
+                scrollToSection(item.toLowerCase());
+              }}>
                 {item}
               </a>
-            </motion.li>
+            </li>
           ))}
         </ul>
 
-        {/* Mobile Menu Toggle */}
         <div className="mobile-toggle" onClick={toggleMenu}>
           {isOpen ? <FaTimes /> : <FaBars />}
         </div>
-      </nav>
+      </div>
 
-      {/* Mobile Navigation */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
             className="mobile-nav"
-            initial="closed"
-            animate="open"
-            exit="closed"
-            variants={menuVariants}
           >
             <ul className="mobile-nav-links">
               {['About', 'Skills', 'Projects', 'Contact'].map((item) => (
                 <li key={item}>
-                  <a
-                    href={`#${item.toLowerCase()}`}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      scrollToSection(item.toLowerCase());
-                    }}
-                  >
+                  <a href={`#${item.toLowerCase()}`} onClick={(e) => {
+                    e.preventDefault();
+                    scrollToSection(item.toLowerCase());
+                  }}>
                     {item}
                   </a>
                 </li>
