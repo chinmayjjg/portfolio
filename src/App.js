@@ -6,16 +6,12 @@ import About from './components/About';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
-import AnimatedBackground from './components/AnimatedBackground';
-import ThemeMusic from './components/ThemeMusic';
 import './App.css';
 
 function App() {
   return (
     <ThemeProvider>
       <div className="App">
-        <AnimatedBackground />
-        <ThemeMusic />
         <Header />
         <main>
           <Hero />
