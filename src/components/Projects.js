@@ -5,6 +5,14 @@ import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
 const Projects = () => {
   const projects = [
     {
+      title:'Resumix',
+      description: 'Modern portfolio builder',
+      tags:['TypeScript', 'Next', 'Node.js', 'MongoDB'],
+      liveLink:'https://resumix-six.vercel.app/',
+      githubLink:'https://github.com/chinmayjjg/Resumix',
+      image: '/images/resumix.png'
+    },
+    {
       title: 'Second Brain',
       description: 'Productivity app for your mind.',
       tags: ['TypeScript', 'React', 'Node.js', 'MongoDB'],
@@ -28,14 +36,7 @@ const Projects = () => {
       githubLink: 'https://github.com/chinmayjjg/weather-',
       image: '/images/weather-app.png'
     },
-    {
-      title: 'DevLink',
-      description: 'Share your developer profile.',
-      tags: ['React', 'Node.js', 'MongoDB'],
-      liveLink: null,
-      githubLink: 'https://github.com/chinmayjjg/devlink',
-      image: '/images/devlink.png'
-    }
+    
   ];
 
   return (

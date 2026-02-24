@@ -1,0 +1,265 @@
+.contribution-graph {
+  --contrib-0: #ebedf0;
+  --contrib-1: #c6e48b;
+  --contrib-2: #7bc96f;
+  --contrib-3: #239a3b;
+  --contrib-4: #196127;
+  --contrib-border: #e1e4e8;
+  --contrib-text: #24292e;
+  --contrib-bg: #ffffff;
+  --day-size: 13px;
+  --day-gap: 4px;
+  --week-width: calc(var(--day-size));
+}
+
+.contribution-graph[data-theme='github'] {
+  --contrib-0: #e3e7ee;
+  --contrib-1: #c6e48b;
+  --contrib-2: #7bc96f;
+  --contrib-3: #239a3b;
+  --contrib-4: #196127;
+  --contrib-bg: #ffffff;
+  --contrib-text: #24292e;
+}
+
+.contribution-graph[data-theme='dark'] {
+  --contrib-0: #0b1114;
+  --contrib-1: #08331c;
+  --contrib-2: #0b5b2f;
+  --contrib-3: #15803d;
+  --contrib-4: #16a34a;
+  --contrib-text: #e6edf3;
+  --contrib-bg: #0d1117;
+  --contrib-border: rgba(255,255,255,0.06);
+}
+
+.graph-container {
+  background: var(--contrib-bg);
+  border: 1px solid var(--contrib-border);
+  border-radius: 8px;
+  padding: 24px;
+  overflow-x: auto;
+  font-family: inherit;
+  width: 100%;
+  box-shadow: 0 6px 18px rgba(2,6,23,0.35);
+}
+
+.graph-header {
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--contrib-border);
+  padding-bottom: 16px;
+}
+
+.graph-title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--contrib-text);
+}
+
+.graph-subtitle {
+  margin: 4px 0 0;
+  font-size: 12px;
+  color: #0e0d0d;
+}
+
+.graph-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.graph-labels-month {
+  display: flex;
+  align-items: center;
+  height: 20px;
+  padding-left: 48px; /* align with day labels column */
+  gap: var(--day-gap);
+  font-size: 12px;
+  color: var(--contrib-text);
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.month-label {
+  width: var(--week-width);
+  text-align: center;
+  font-size: 11px;
+  color: var(--contrib-text);
+}
+
+.graph-content {
+  display: flex;
+  gap: 8px;
+}
+
+.graph-labels-day {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 40px;
+  font-size: 11px;
+  color: var(--contrib-text);
+  font-weight: 500;
+  text-align: center;
+}
+
+.day-label {
+  height: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.graph-grid {
+  display: flex;
+  gap: var(--day-gap);
+}
+
+.graph-week {
+  display: flex;
+  flex-direction: column;
+  gap: var(--day-gap);
+  width: var(--week-width);
+}
+
+.graph-day {
+  width: var(--day-size);
+  height: var(--day-size);
+  border-radius: 3px;
+  cursor: pointer;
+  border: 1px solid rgba(27, 31, 35, 0.06);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+
+.graph-day:hover {
+  transform: scale(1.14);
+  box-shadow: 0 6px 14px rgba(2,6,23,0.25);
+}
+
+.graph-legend {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--contrib-text);
+  padding-top: 12px;
+  border-top: 1px solid var(--contrib-border);
+}
+
+.graph-preview {
+  background: rgba(2,6,23,0.6);
+  padding: 12px 12px 8px 12px;
+  border-radius: 8px;
+  overflow-x: auto;
+  border: 1px solid rgba(255,255,255,0.03);
+}
+
+/* horizontal scrollbar styling */
+.graph-preview::-webkit-scrollbar {
+  height: 10px;
+}
+.graph-preview::-webkit-scrollbar-thumb {
+  background: rgba(11, 11, 11, 0.12);
+  border-radius: 999px;
+}
+.graph-preview::-webkit-scrollbar-track {
+  background: rgba(255,255,255,0.02);
+}
+
+.month-label {
+  min-width: calc(var(--week-width) + var(--day-gap));
+}
+
+.graph-container[data-theme='dark'] .graph-preview {
+  background: #071014;
+  border: 1px solid rgba(255,255,255,0.04);
+}
+
+.graph-container[data-theme='dark'] .graph-day {
+  border: 1px solid rgba(255,255,255,0.03);
+}
+
+.graph-container[data-theme='dark'] .month-label,
+.graph-container[data-theme='dark'] .graph-title,
+.graph-container[data-theme='dark'] .graph-subtitle,
+.graph-container[data-theme='dark'] .day-label {
+  color: #cbd5de;
+}
+
+.legend-label {
+  font-weight: 500;
+}
+
+.legend-items {
+  display: flex;
+  gap: 2px;
+}
+
+.legend-item {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  border: 1px solid rgba(27, 31, 35, 0.06);
+}
+
+.contribution-graph-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  gap: 12px;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--contrib-border);
+  border-top-color: var(--contrib-4);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .graph-container {
+    padding: 16px;
+  }
+
+  .graph-title {
+    font-size: 16px;
+  }
+
+  .graph-labels-month {
+    font-size: 10px;
+    gap: 0px;
+  }
+
+  .month-label {
+    min-width: 30px;
+  }
+
+  .graph-day {
+    width: 11px;
+    height: 11px;
+  }
+
+  .graph-labels-day {
+    width: 30px;
+    font-size: 10px;
+  }
+
+  .legend-item {
+    width: 10px;
+    height: 10px;
+  }
+}

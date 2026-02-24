@@ -44,7 +44,7 @@ const Hero = () => {
           className="cta-group"
         >
           <a href="#projects" className="btn btn-primary">View Work</a>
-          <a href="Chinmay pradhan mca.pdf" className="btn btn-secondary">Download Resume</a>
+          <a href="CHINMAY PRADHAN FULLSTACKDEV.pdf" className="btn btn-secondary">Download Resume</a>
         </motion.div>
       </div>
     </section>
