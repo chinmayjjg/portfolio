@@ -1,9 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { SiTypescript, SiMongodb, SiExpress } from 'react-icons/si';
+import { SiTypescript, SiMongodb, SiExpress, SiPostgresql, SiGraphql, SiNextdotjs } from 'react-icons/si';
 import { BiKey } from 'react-icons/bi';
 import {
-  FaReact, FaNodeJs, FaJs, FaHtml5, FaCss3Alt, FaGitAlt, FaGithub, FaPython
+  FaReact, FaNodeJs, FaJs, FaHtml5, FaCss3Alt, FaGitAlt, FaGithub, FaPython, FaLayerGroup
 } from 'react-icons/fa';
 
 const Skills = () => {
@@ -17,6 +17,10 @@ const Skills = () => {
     { name: 'Express', icon: SiExpress, color: '#fff' },
     { name: 'Python', icon: FaPython, color: '#3776AB' },
     { name: 'MongoDB', icon: SiMongodb, color: '#47A248' },
+    { name: 'PostgreSQL', icon: SiPostgresql, color: '#336791' },
+    { name: 'GraphQL', icon: SiGraphql, color: '#E10098' },
+    { name: 'Next.js', icon: SiNextdotjs, color: '#000000' },
+    { name: 'shadcn/ui', icon: FaLayerGroup, color: '#06B6D4' },
     { name: 'Git', icon: FaGitAlt, color: '#F05032' },
     { name: 'GitHub', icon: FaGithub, color: '#fff' },
     { name: 'Auth', icon: BiKey, color: '#EDBA27' },
