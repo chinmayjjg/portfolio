@@ -21,7 +21,7 @@ const Hero = () => {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="hero-subtitle"
         >
-          Hi, I'm Chinmay. I build accessible, pixel-perfect, and performant web experiences.
+          Full-Stack MERN Developer who builds fast and ships clean. I turn ideas into scalable web applications with MongoDB, Express, React, and Node.js.
         </motion.p>
 
         <motion.div

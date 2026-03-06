@@ -34,21 +34,15 @@ const About = () => {
             className="about-text"
           >
             <h3 style={{ fontSize: '1.8rem', marginBottom: '1.5rem', color: 'var(--text-primary)' }}>
-              Passionate Full Stack Developer
+              Full Stack Developer
             </h3>
 
             <p>
-              I'm a passionate full-stack developer with a love for creating beautiful,
-              functional, and user-centered digital experiences. With a strong foundation
-              in both front-end and back-end development, I enjoy bringing ideas to life
-              through clean, efficient code.
+              Currently interned at Aspol Media, migrating legacy PHP systems to Node.js. Built Resumix - a portfolio builder that converts resumes to websites with 70% accuracy. Solo-built Second Brain - a knowledge management app used by 20+ real users.
             </p>
 
             <p>
-              I specialize in building modern web applications using React, Node.js, and
-              various other cutting-edge technologies. My approach combines technical
-              expertise with creative problem-solving to deliver solutions that not only
-              meet requirements but exceed expectations.
+              Pursuing MCA at Gita Autonomous College. When I'm not coding, I'm exploring new technologies or debugging something interesting.
             </p>
 
             <div style={{ marginTop: '2rem', display: 'flex', gap: '2rem' }}>

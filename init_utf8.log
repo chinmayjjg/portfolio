@@ -1,0 +1,30 @@
+﻿node.exe : - Preflight 
+checks.
+At line:1 char:1
++ & "C:\Program 
+Files\nodejs/node.exe" 
+"C:\Program 
+Files\nodejs/node_mo 
+...
++ ~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~
+~~
+    + CategoryInfo     
+         : NotSpecifi  
+  ed: (- Preflight c   
+ hecks.:String) [],    
+ RemoteException
+    + FullyQualifiedEr 
+   rorId : NativeComm  
+  andError
+ 
+Γ£ö Preflight checks.
+- Verifying framework.
+Γ£û Verifying 
+framework.
+
+We could not detect a supported framework at C:\Users\pradh\Downloads\portfolio.
+Visit https://ui.shadcn.com/docs/installation/manual to manually configure your project.
+Once configured, you can use the cli to add components.
+
