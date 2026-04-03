@@ -16,6 +16,7 @@ export const ThemeProvider = ({ children }) => {
   useEffect(() => {
     // Apply theme to body
     document.body.className = isDark ? 'dark-theme' : 'light-theme';
+    document.documentElement.classList.toggle('dark', isDark);
   }, [isDark]);
 
   const toggleTheme = () => {

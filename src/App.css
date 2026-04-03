@@ -286,6 +286,135 @@ a {
     height: calc(50% - 0.5rem);
 }
 
+/* Contributions */
+.contributions-section {
+    position: relative;
+}
+
+.contributions-shell {
+    display: grid;
+    grid-template-columns: minmax(0, 320px) minmax(0, 1fr);
+    gap: 2rem;
+    align-items: start;
+}
+
+.contributions-copy {
+    position: sticky;
+    top: 120px;
+}
+
+.contributions-eyebrow {
+    display: inline-block;
+    margin-bottom: 1rem;
+    padding: 0.35rem 0.75rem;
+    border: 1px solid rgba(59, 130, 246, 0.25);
+    border-radius: 999px;
+    color: #93c5fd;
+    background: rgba(59, 130, 246, 0.08);
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.contributions-copy h3 {
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    margin-bottom: 1rem;
+}
+
+.contributions-copy p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    max-width: 32rem;
+}
+
+.contributions-copy a {
+    color: var(--text-primary);
+    text-decoration: underline;
+    text-decoration-color: rgba(255, 255, 255, 0.3);
+}
+
+.contributions-card {
+    padding: 1.5rem;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background:
+        radial-gradient(circle at top right, rgba(59, 130, 246, 0.16), transparent 35%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02));
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+    overflow: hidden;
+}
+
+.contributions-summary {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.contributions-summary > div {
+    min-width: 140px;
+    padding: 1rem 1.1rem;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.contributions-summary strong {
+    display: block;
+    font-size: 1.8rem;
+    color: var(--text-primary);
+}
+
+.contributions-summary-label {
+    display: block;
+    margin-bottom: 0.35rem;
+    color: var(--text-secondary);
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.contributions-status {
+    min-height: 260px;
+    display: grid;
+    place-items: center;
+    padding: 1rem;
+    border-radius: 18px;
+    border: 1px dashed rgba(255, 255, 255, 0.12);
+    color: var(--text-secondary);
+    text-align: center;
+}
+
+.contributions-status-error {
+    color: #fca5a5;
+}
+
+.contribution-graph-widget {
+    width: 100%;
+    gap: 1rem;
+}
+
+.contribution-graph-widget svg text {
+    fill: rgba(255, 255, 255, 0.7);
+    font-size: 12px;
+}
+
+.contribution-graph-block {
+    stroke: rgba(255, 255, 255, 0.06);
+    transition: transform 0.18s ease, opacity 0.18s ease;
+}
+
+.contribution-graph-block:hover {
+    opacity: 0.95;
+}
+
+.contribution-graph-footer {
+    align-items: center;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
 /* Skills */
 .skills-grid {
     display: grid;
@@ -483,6 +612,18 @@ a {
     .about-images {
         grid-template-columns: 1fr;
         height: auto;
+    }
+
+    .contributions-shell {
+        grid-template-columns: 1fr;
+    }
+
+    .contributions-copy {
+        position: static;
+    }
+
+    .contributions-card {
+        padding: 1rem;
     }
 
     .image-stack {
