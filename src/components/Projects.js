@@ -24,7 +24,7 @@ const Projects = () => {
       title: 'AI Ticket System',
       description: 'Smart support with AI agents.',
       tags: ['TypeScript', 'React', 'Express', 'AI'],
-      liveLink: null,
+      liveLink:'https://ai-ticket-management.vercel.app/',
       githubLink: 'https://github.com/chinmayjjg/ai-ticket-management',
       image: '/images/ai-ticket-management.png'
     },
