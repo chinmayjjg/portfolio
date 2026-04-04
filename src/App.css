@@ -169,12 +169,47 @@ a {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-top: 4rem;
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+}
+
+.app-background {
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at top center, rgba(59, 130, 246, 0.09), transparent 24%),
+        radial-gradient(circle at 85% 55%, rgba(139, 92, 246, 0.08), transparent 20%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.01), rgba(255, 255, 255, 0));
+}
+
+.portfolio-tracing-beam {
+    max-width: min(1200px, calc(100vw - 2rem));
+    padding-left: clamp(2.5rem, 5vw, 4.5rem);
+    padding-right: 1rem;
 }
 
 .hero-content {
     text-align: center;
     max-width: 800px;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-name-background {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    opacity: 0.4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 2rem;
+    filter: drop-shadow(0 0 18px rgba(255, 255, 255, 0.08));
+}
+
+.hero-name-background svg {
+    width: min(1200px, 96vw);
+    height: min(48vh, 420px);
 }
 
 .hero-title {
@@ -195,6 +230,15 @@ a {
     max-width: 600px;
     margin-left: auto;
     margin-right: auto;
+}
+
+.hero-subtitle,
+.about-text p,
+.contributions-copy p,
+.project-desc,
+.contact-container p {
+    font-family: var(--font-mono);
+    letter-spacing: 0.01em;
 }
 
 .cta-group {
@@ -243,7 +287,6 @@ a {
 }
 
 .about-text p {
-    color: var(--text-secondary);
     margin-bottom: 1.5rem;
     font-size: 1.1rem;
 }
@@ -323,7 +366,6 @@ a {
 }
 
 .contributions-copy p {
-    color: var(--text-secondary);
     font-size: 1rem;
     max-width: 32rem;
 }
@@ -456,21 +498,27 @@ a {
 /* Projects */
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(350px, 100%), 1fr));
     gap: 2rem;
 }
 
+.project-card-shell {
+    perspective: 1200px;
+    min-width: 0;
+}
+
 .project-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
+    background: linear-gradient(180deg, rgba(17, 17, 17, 0.96), rgba(10, 10, 10, 0.94));
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
     overflow: hidden;
     transition: all 0.3s ease;
+    height: 100%;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
 .project-card:hover {
-    transform: translateY(-4px);
-    border-color: var(--text-secondary);
+    border-color: rgba(255, 255, 255, 0.18);
     box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
 }
 
@@ -501,7 +549,6 @@ a {
 }
 
 .project-desc {
-    color: var(--text-secondary);
     font-size: 0.95rem;
     margin-bottom: 1.5rem;
     min-height: 3rem;
@@ -525,6 +572,7 @@ a {
 
 .project-links {
     display: flex;
+    flex-wrap: wrap;
     gap: 1rem;
 }
 
@@ -545,6 +593,7 @@ a {
 .contact-container {
     max-width: 600px;
     margin: 0 auto;
+    padding-bottom: 7rem;
 }
 
 .contact-form {
@@ -588,8 +637,28 @@ a {
 
 /* Responsive */
 @media (max-width: 768px) {
+    .container {
+        padding: 0 1rem;
+    }
+
+    .portfolio-tracing-beam {
+        max-width: calc(100vw - 1rem);
+        padding-left: 1.75rem;
+        padding-right: 0.25rem;
+    }
+
     .hero-title {
         font-size: 2.5rem;
+    }
+
+    .hero-name-background {
+        opacity: 0.3;
+        padding: 0 1rem;
+    }
+
+    .hero-name-background svg {
+        width: 100%;
+        height: min(26vh, 180px);
     }
 
     .desktop-nav {
@@ -624,6 +693,19 @@ a {
 
     .contributions-card {
         padding: 1rem;
+    }
+
+    .projects-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 1.5rem;
+    }
+
+    .project-content {
+        padding: 1.1rem;
+    }
+
+    .project-links {
+        gap: 0.75rem;
     }
 
     .image-stack {

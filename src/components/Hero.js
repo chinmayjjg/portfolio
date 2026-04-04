@@ -1,10 +1,14 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { SiTypescript, SiReact, SiNextdotjs, SiNodedotjs } from 'react-icons/si';
+import { TextHoverEffect } from './ui/text-hover-effect';
 
 const Hero = () => {
   return (
     <section className="hero">
+      <div className="hero-name-background" aria-hidden="true">
+        <TextHoverEffect text="CHINMAY" duration={0.35} />
+      </div>
       <div className="container hero-content">
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
