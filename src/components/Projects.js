@@ -11,7 +11,7 @@ const Projects = () => {
   const projects = [
     {
       title:'Resumix',
-      description: 'Modern portfolio builder',
+      description: "Resumix is a full-stack web application that transforms a traditional resume into a modern, customizable portfolio website within minutes. Users can upload their resume in PDF format, and the platform automatically extracts, structures, and organizes the information into a professional portfolio that can be edited, personalized, and shared through a unique public URL The application leverages AI-powered content classification and resume parsing to identify key sections such as personal information, education, work experience, projects, technical skills, certifications, and achievements. Users can review and modify the extracted content through an intuitive dashboard before publishing their portfolio ",
       tags:['TypeScript', 'Next', 'Node.js', 'MongoDB'],
       liveLink:'https://resumix-six.vercel.app/',
       githubLink:'https://github.com/chinmayjjg/Resumix',
@@ -19,7 +19,7 @@ const Projects = () => {
     },
     {
       title: 'Second Brain',
-      description: 'Productivity app for your mind.',
+      description: 'Second Brain is a full-stack knowledge management application designed to help users capture, organize, and retrieve valuable information from across the web in a centralized workspace. Inspired by the concept of a "digital second brain," the platform enables users to save links, articles, videos, and notes, transforming scattered information into a structured and searchable knowledge repository.The application provides a secure and intuitive environment where users can manage their learning resources, ideas, and references efficiently. With support for content categorization, tagging, and metadata extraction, users can quickly find and revisit important information whenever needed.',
       tags: ['TypeScript', 'React', 'Node.js', 'MongoDB'],
       liveLink: 'https://second-brain-client-7tbj.vercel.app/login',
       githubLink: 'https://github.com/chinmayjjg/second-brain',
@@ -27,7 +27,7 @@ const Projects = () => {
     },
     {
       title: 'AI Ticket System',
-      description: 'Smart support with AI agents.',
+      description: 'AI Ticket Management System is a full-stack support ticketing platform that leverages Artificial Intelligence to automate ticket categorization, prioritization, and assignment. The system streamlines customer support workflows by intelligently analyzing incoming tickets and routing them to the most suitable moderators or support agents, reducing manual effort and improving response times.The platform uses AI to understand ticket content, determine urgency levels, generate contextual insights, and assist support teams in resolving issues more efficiently. It also incorporates role-based access control, secure authentication, and event-driven background processing to ensure scalability and reliability. Similar AI-powered ticketing systems use automated categorization, priority assignment, skill-based routing, and AI-generated assistance for moderators.',
       tags: ['TypeScript', 'React', 'Express', 'AI'],
       liveLink:'https://ai-ticket-management.vercel.app/',
       githubLink: 'https://github.com/chinmayjjg/ai-ticket-management',
