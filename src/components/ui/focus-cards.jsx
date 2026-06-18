@@ -16,7 +16,18 @@ export const Card = React.memo(({
       "group rounded-lg relative bg-gray-100 dark:bg-neutral-900 overflow-hidden h-80 md:h-96 w-full transition-all duration-300 ease-out",
       hovered !== null && hovered !== index && "blur-sm scale-[0.98]"
     )}>
-    <img src={card.src} alt={card.title} className="h-full w-full object-cover absolute inset-0" />
+    <img
+      src={card.src}
+      alt={`${card.title} project preview`}
+      loading="lazy"
+      className="h-full w-full object-cover absolute inset-0"
+      onError={(event) => {
+        if (card.fallbackSrc && !event.currentTarget.dataset.fallbackApplied) {
+          event.currentTarget.dataset.fallbackApplied = "true";
+          event.currentTarget.src = card.fallbackSrc;
+        }
+      }}
+    />
     <div
       className={cn(
         "absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/15 flex items-end p-5 transition-opacity duration-300 opacity-100 md:opacity-0",
