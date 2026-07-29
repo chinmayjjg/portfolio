@@ -7,6 +7,7 @@ import {
   IconHome,
   IconMail,
   IconNewSection,
+  IconBriefcase,
   IconTerminal2,
 } from '@tabler/icons-react';
 import FloatingDock from './ui/floating-dock';
@@ -26,6 +27,11 @@ const dockItems = [
     title: 'Skills',
     icon: <IconTerminal2 className="h-full w-full text-neutral-500 dark:text-neutral-300" />,
     href: '#skills',
+  },
+  {
+    title: 'Experience',
+    icon: <IconBriefcase className="h-full w-full text-neutral-500 dark:text-neutral-300" />,
+    href: '#experience',
   },
   {
     title: 'Projects',

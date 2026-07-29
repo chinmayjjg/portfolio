@@ -23,7 +23,7 @@ const Header = () => {
         </div>
 
         <ul className="nav-links desktop-nav">
-          {['About', 'Skills', 'Projects', 'Contact'].map((item) => (
+          {['About', 'Experience', 'Skills', 'Projects', 'Contact'].map((item) => (
             <li key={item}>
               <a href={`#${item.toLowerCase()}`} onClick={(e) => {
                 e.preventDefault();
@@ -49,7 +49,7 @@ const Header = () => {
             className="mobile-nav"
           >
             <ul className="mobile-nav-links">
-              {['About', 'Skills', 'Projects', 'Contact'].map((item) => (
+              {['About', 'Experience', 'Skills', 'Projects', 'Contact'].map((item) => (
                 <li key={item}>
                   <a href={`#${item.toLowerCase()}`} onClick={(e) => {
                     e.preventDefault();
